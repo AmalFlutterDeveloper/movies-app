@@ -10,36 +10,30 @@ GoRouterState state(BuildContext context) => GoRouterState.of(context);
 /// if you pass context then it will take all path parameters and query parameters
 /// and pass it to the new route
 void go(
-  R route, {
+  R route,
+  BuildContext context, {
   Map<String, String> pathParameters = const <String, String>{},
   Map<String, dynamic> queryParameters = const <String, dynamic>{},
   Object? extra,
-  BuildContext? context,
   BuildContext? returnToMe,
 }) {
-  NavigationService.context?.goNamed(
+  context.goNamed(
     route.name,
-    pathParameters: {
-      if (context != null) ...GoRouterState.of(context).pathParameters,
-      ...pathParameters
-    },
-    queryParameters: {
-      if (context != null) ...GoRouterState.of(context).queryParameters,
-      if (returnToMe != null) 'from': GoRouterState.of(returnToMe).location,
-      ...queryParameters
-    },
+    pathParameters: pathParameters,
+    queryParameters: queryParameters,
     extra: extra,
   );
 }
 
 /// pushing a screen to stack
 void push(
-  R route, {
+  R route,
+  BuildContext context, {
   Map<String, String> pathParameters = const <String, String>{},
   Map<String, dynamic> queryParameters = const <String, dynamic>{},
   Object? extra,
 }) =>
-    NavigationService.context?.pushNamed(
+    context.pushNamed(
       route.name,
       pathParameters: pathParameters,
       queryParameters: queryParameters,
@@ -48,12 +42,13 @@ void push(
 
 /// pop current screen from stack then adding screen to stack
 void pushReplacement(
-  R route, {
+  R route,
+  BuildContext context, {
   Map<String, String> pathParameters = const <String, String>{},
   Map<String, dynamic> queryParameters = const <String, dynamic>{},
   Object? extra,
 }) =>
-    NavigationService.context?.pushReplacementNamed(
+    context.pushReplacementNamed(
       route.name,
       pathParameters: pathParameters,
       queryParameters: queryParameters,
