@@ -1,10 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_app/presentation/pages/forget_password/forget_password.page.dart';
 import 'package:movies_app/presentation/pages/home/home.page.dart';
+import 'package:movies_app/presentation/pages/new_password/new_password.page.dart';
 import 'package:movies_app/presentation/pages/sign_in/sign_in.page.dart';
 import 'package:movies_app/presentation/pages/sign_in_up/sign_in_up.page.dart';
 import 'package:movies_app/presentation/pages/sign_up/sign_up.page.dart';
 import 'package:movies_app/presentation/pages/splash/splash.page.dart';
+import 'package:movies_app/presentation/pages/verification_page/verification.page.dart';
 
 enum R {
   splash,
@@ -12,6 +15,9 @@ enum R {
   signIn,
   signUp,
   signInUp,
+  forgetPassword,
+  newPassword,
+  verification,
 }
 
 class NavigationService {
@@ -50,12 +56,35 @@ class NavigationService {
         ),
       ),
       GoRoute(
-        name: R.signIn.name,
-        path: '/signIn',
-        builder: (_, state) => SignInPage(
+        name: R.newPassword.name,
+        path: '/newPassword',
+        builder: (_, state) => NewPasswordPage(
           key: state.pageKey,
         ),
       ),
+      GoRoute(
+          name: R.signIn.name,
+          path: '/signIn',
+          builder: (_, state) => SignInPage(
+                key: state.pageKey,
+              ),
+          routes: [
+            GoRoute(
+                name: R.forgetPassword.name,
+                path: 'forgetPassword',
+                builder: (_, state) => ForgetPasswordPage(
+                      key: state.pageKey,
+                    ),
+                routes: [
+                  GoRoute(
+                    name: R.verification.name,
+                    path: 'verification',
+                    builder: (_, state) => VerificationPage(
+                      key: state.pageKey,
+                    ),
+                  ),
+                ]),
+          ]),
     ],
   );
 }

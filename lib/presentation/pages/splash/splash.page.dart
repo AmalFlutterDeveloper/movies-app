@@ -3,7 +3,7 @@ import 'package:movies_app/core/color.dart';
 import 'package:movies_app/core/constant/space.core.dart';
 import 'package:movies_app/core/navigation.core.dart';
 import 'package:movies_app/presentation/widgets/button/btn.widget.dart';
-import 'package:movies_app/presentation/widgets/default_container.widget.dart';
+import 'package:movies_app/presentation/widgets/default_background.widget.dart';
 import 'package:movies_app/presentation/widgets/txt.widget.dart';
 import 'package:movies_app/service/navigation.service.dart';
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/service/navigation.service.dart';
 
 /// it will return SizedBox.shrink();
 const empty = SizedBox.shrink();
@@ -33,6 +32,9 @@ const space14 = _Space(14);
 
 /// gap 16*16
 const space16 = _Space(16);
+
+/// gap 18*18
+const space18 = _Space(18);
 
 /// gap 20*20
 const space20 = _Space(20);
@@ -72,12 +74,6 @@ const divider = Divider(
   thickness: 1,
   color: Color(0xffF2F4F7),
 );
-
-/// this method will be used to return a sized box with height of status bar
-/// to avoid hide any content if screen behind status bar
-SizedBox get appbarHeight => SizedBox(
-      height: MediaQuery.of(NavigationService.context!).viewPadding.top,
-    );
 
 /// bottom navigation bar height, this must be used in
 /// 'menu,booking request,home,favorites and inbox' pages
